@@ -1,6 +1,6 @@
 % Template:     Artículo LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      1.1.6 (12/06/2022)
+% Versión:      1.2.3 (03/04/2023)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -18,6 +18,14 @@
 \makeatletter
 	\g@addto@macro\documenttitle\xspace
 \makeatother
+
+% -----------------------------------------------------------------------------
+% Se crean variables si se borraron
+% -----------------------------------------------------------------------------
+\ifthenelse{\isundefined{\documentsubtitle}}{
+	\errmessage{LaTeX Warning: Se borro la variable \noexpand\documentsubtitle, creando una vacia}
+	\def\documentsubtitle {}}{
+}
 
 \ifthenelse{\equal{\documentsubtitle}{}}{
 	\def\documenttitlehf {\documenttitle}
@@ -62,16 +70,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={12/06/2022},
+		Template.Date={03/04/2023},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Articulo},
 		Template.Type={Normal},
-		Template.Version.Dev={1.1.6-3-ARTC},
-		Template.Version.Hash={9C6F7751000C86237D47DFE2BC8BFD76},
-		Template.Version.Release={1.1.6},
+		Template.Version.Dev={1.2.3-1-ARTC},
+		Template.Version.Hash={743F42A7F4629A0358859CC639CC3723},
+		Template.Version.Release={1.2.3},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Articulo},
 		Template.Web.Manual={https://latex.ppizarror.com/articulo},
 	},
@@ -79,7 +87,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Articulo v1.1.6 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Articulo v1.2.3 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},

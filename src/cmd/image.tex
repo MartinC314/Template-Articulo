@@ -1,6 +1,6 @@
 % Template:     Artículo LaTeX
 % Documento:    Funciones para insertar imágenes
-% Versión:      1.1.6 (12/06/2022)
+% Versión:      1.2.3 (03/04/2023)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -17,7 +17,7 @@
 \newlength{\coreimageshspace}
 \setlength{\coreimageshspace}{\dimexpr 9pt + 0.261330719\corefontwidth - 9.26795284pt}
 
-% Añade una imagen a un env "image" con borde
+% Añade una imagen en el entorno "images" con borde
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen
 %	#3	Parámetros de la imagen
@@ -26,7 +26,7 @@
 	\addimageboxed[#1]{#2}{#3}{0}{#4}%
 }
 
-% Añade una imagen a un env "image" con borde
+% Añade una imagen en el entorno "images" con borde
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen
 %	#3	Parámetros de la imagen
@@ -52,15 +52,15 @@
 		}%
 	}{ % Con label
 		\ifthenelse{\equal{\GLOBALimagelink}{\GLOBALemptyvar}}{ % Sin link
-			\subfloat[#5]{%
+			\subfloat[#5#1]{%
 				\raisebox{\GLOBALimagenextmarginv}{%
-					\fbox{\includegraphics[#3]{#2}}#1%
+					\fbox{\includegraphics[#3]{#2}}%
 				}%
 			}%
 		}{ % Con link
-			\subfloat[#5]{%
+			\subfloat[#5#1]{%
 				\raisebox{\GLOBALimagenextmarginv}{%
-					\fbox{\href{\GLOBALimagelink}{\includegraphics[#3]{#2}}#1}%
+					\fbox{\href{\GLOBALimagelink}{\includegraphics[#3]{#2}}}%
 				}%
 			}%
 		}%
@@ -70,14 +70,14 @@
 	\global\def\GLOBALimagenextmarginv {0 cm}%
 }
 
-% Añade una imagen a un env "image" con borde sin leyenda
+% Añade una imagen en el entorno "images" con borde sin leyenda
 %	#1	Dirección de la imagen
 %	#2	Parámetros de la imagen
 \newcommand{\addimageanum}[2]{%
 	\addimageboxed{#1}{#2}{0}{\GLOBALemptyvar}%
 }
 
-% Añade una imagen a un env "image" con borde sin leyenda
+% Añade una imagen en el entorno "images" con borde sin leyenda
 %	#1	Dirección de la imagen
 %	#2	Parámetros de la imagen
 %	#3	Ancho de la línea (en pt)
@@ -85,7 +85,7 @@
 	\addimageboxed{#1}{#2}{#3}{\GLOBALemptyvar}%
 }
 
-% Añade una imagen a un env "image" con borde animada
+% Añade una imagen en el entorno "images" con borde animada
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen animada
 %	#3	Parámetros de la imagen
@@ -96,7 +96,7 @@
 	\addimageanimatedboxed[#1]{#2}{#3}{#4}{#5}{0}{#6}%
 }
 
-% Añade una imagen a un env "image" con borde animada
+% Añade una imagen en el entorno "images" con borde animada
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen animada
 %	#3	Parámetros de la imagen
@@ -135,25 +135,25 @@
 			}%
 		}%
 	}{ % Con label
-		\subfloat[#7]{%
+		\subfloat[#7#1]{%
 			\ifthenelse{\equal{\animatedimageloop}{true}}{ % Con loop
 				\ifthenelse{\equal{\animatedimageautoplay}{true}}{ % Con autoplay
 					\raisebox{\GLOBALimagenextmarginv}{%
-						\fbox{\animategraphics[loop,autoplay,#3]{#4}{#2-}{0}{#5}#1}%
+						\fbox{\animategraphics[loop,autoplay,#3]{#4}{#2-}{0}{#5}}%
 					}%
 				}{ % Sin autoplay
 					\raisebox{\GLOBALimagenextmarginv}{%
-						\fbox{\animategraphics[loop,#3]{#4}{#2-}{0}{#5}#1}%
+						\fbox{\animategraphics[loop,#3]{#4}{#2-}{0}{#5}}%
 					}%
 				}%
 			}{ % Sin loop
 				\ifthenelse{\equal{\animatedimageautoplay}{true}}{ % Con autoplay
 					\raisebox{\GLOBALimagenextmarginv}{%
-						\fbox{\animategraphics[autoplay,#3]{#4}{#2-}{0}{#5}#1}%
+						\fbox{\animategraphics[autoplay,#3]{#4}{#2-}{0}{#5}}%
 					}%
 				}{ % Sin autoplay
 					\raisebox{\GLOBALimagenextmarginv}{%
-						\fbox{\animategraphics[#3]{#4}{#2-}{0}{#5}#1}%
+						\fbox{\animategraphics[#3]{#4}{#2-}{0}{#5}}%
 					}%
 				}%
 			}%
@@ -164,7 +164,7 @@
 	\global\def\GLOBALimagenextmarginv {0 cm}%
 }
 
-% Añade una imagen a un env "image" con borde sin leyenda animada
+% Añade una imagen en el entorno "images" con borde sin leyenda animada
 %	#1	Dirección de la imagen animada
 %	#2	Parámetros de la imagen
 %	#3	FPS de la imagen
@@ -173,7 +173,7 @@
 	\addimageanimatedboxed{#1}{#2}{#3}{#4}{0}{\GLOBALemptyvar}%
 }
 
-% Añade una imagen a un env "image" con borde sin leyenda animada
+% Añade una imagen en el entorno "images" con borde sin leyenda animada
 %	#1	Dirección de la imagen animada
 %	#2	Parámetros de la imagen
 %	#3	FPS de la imagen
@@ -183,7 +183,7 @@
 	\addimageanimatedboxed{#1}{#2}{#3}{#4}{#5}{\GLOBALemptyvar}%
 }
 
-% Añade una imagen a un env "image" con borde y un link
+% Añade una imagen en el entorno "images" con borde y un link
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen
 %	#3	Parámetros de la imagen
@@ -193,7 +193,7 @@
 	\addimagelinkboxed[#1]{#2}{#3}{0}{#4}{#5}%
 }
 
-% Añade una imagen a un env "image" con borde
+% Añade una imagen en el entorno "images" con borde
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen
 %	#3	Parámetros de la imagen
@@ -206,7 +206,7 @@
 	\global\def\GLOBALimagelink {\GLOBALemptyvar}%
 }
 
-% Añade una imagen a un env "image" con borde sin leyenda
+% Añade una imagen en el entorno "images" con borde sin leyenda
 %	#1	Dirección de la imagen
 %	#2	Parámetros de la imagen
 %	#3	Link de la imagen
@@ -214,7 +214,7 @@
 	\addimagelink{#1}{#2}{#3}{\GLOBALemptyvar}%
 }
 
-% Añade una imagen a un env "image" con borde sin leyenda
+% Añade una imagen en el entorno "images" con borde sin leyenda
 %	#1	Dirección de la imagen
 %	#2	Parámetros de la imagen
 %	#3	Ancho de la línea (en pt)
@@ -223,15 +223,13 @@
 	\addimagelinkboxed{#1}{#2}{#3}{#4}{\GLOBALemptyvar}%
 }
 
-% Añade un salto de línea en las imágenes
-\newcommand{\imagesnewline}{%
+% Permite continuar la numeración en el entorno "images"
+\newcommand{\imagescontinuenumbering}{%
 	\checkonlyonenvimage%
-	\global\def\GLOBALenvimageadded {false}%
-	\corevspacevarcm{\marginimagemultbottom}%
-	~\linebreak\noindent%
+	\global\def\GLOBALenvimagecf {true}%
 }
 
-% Agrega un espacio horizontal a las imágenes
+% Agrega un espacio horizontal en el entorno "images"
 % 	#1 Tamaño del espacio
 \newcommand{\imageshspace}[1]{%
 	\checkonlyonenvimage%
@@ -239,7 +237,15 @@
 	\hspace{#1}%
 }
 
-% Agrega un espacio vertical a las imágenes
+% Añade un salto de línea en el entorno "images"
+\newcommand{\imagesnewline}{%
+	\checkonlyonenvimage%
+	\global\def\GLOBALenvimageadded {false}%
+	\corevspacevarcm{\marginimagemultbottom}%
+	~\linebreak\noindent%
+}
+
+% Agrega un espacio vertical en el entorno "images"
 % 	#1 Tamaño del espacio
 \newcommand{\imagesvspace}[1]{%
 	\checkonlyonenvimage%
@@ -247,9 +253,10 @@
 	~ \\ \vspace*{#1}%
 }
 
-% Establece el margen vertical de la siguiente imagen
+% Establece el margen vertical de la siguiente imagen en el entorno "images"
 %	#1	Margen vertical
 \newcommand{\setnextimagevmargin}[1]{%
+	\checkonlyonenvimage%
 	\emptyvarerr{\setimagesvmargin}{#1}{Tamaño del margen}%
 	\global\def\GLOBALimagenextmarginv {#1}%
 }
@@ -427,56 +434,56 @@
 	\setcaptionmargincm{\captionlrmarginmc}%
 	\ifthenelse{\equal{#5}{bottom}}{%
 		\begin{samepage}%
-		\begin{figure*}[b]
+		\begin{figure*}[!b]
 	}{%
 	\ifthenelse{\equal{#5}{top}}{%
 		\begin{samepage}%
-		\begin{figure*}[t]
+		\begin{figure*}[!t]
 	}{%
 	\ifthenelse{\equal{#5}{fixed2}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[h]
+		\begin{figure*}[!h]
 	}{%
 	\ifthenelse{\equal{#5}{fixed2b}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[b]
+		\begin{figure*}[!b]
 	}{%
 	\ifthenelse{\equal{#5}{fixed2t}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[t]
+		\begin{figure*}[!t]
 	}{%
 	\ifthenelse{\equal{#5}{fixed3}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[h]
+		\begin{figure*}[!h]
 	}{%
 	\ifthenelse{\equal{#5}{fixed3b}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[b]
+		\begin{figure*}[!b]
 	}{%
 	\ifthenelse{\equal{#5}{fixed3t}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[t]
+		\begin{figure*}[!t]
 	}{%
 	\ifthenelse{\equal{#5}{fixed4}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[h]
+		\begin{figure*}[!h]
 	}{%
 	\ifthenelse{\equal{#5}{fixed4b}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[h]
+		\begin{figure*}[!h]
 	}{%
 	\ifthenelse{\equal{#5}{fixed4t}}{%
 		\end{multicols}
 		\begin{samepage}%
-		\begin{figure*}[h]
+		\begin{figure*}[!h]
 	}{%
 		\errmessage{LaTeX Warning: Posicion de imagen invalida, valores esperados: bottom,top,fixed2,fixed2b,fixed2t,fixed3,fixed3b,fixed3t,fixed4,fixed4b,fixed4t}
 		\stop}}}}}}}}}}
